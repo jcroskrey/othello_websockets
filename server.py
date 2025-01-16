@@ -5,14 +5,9 @@ import asyncio
 from websockets.asyncio.server import serve
 
 async def handler(websocket):
-    name = await websocket.recv()
-    print(f"<<< {name}")
-
-    greeting = f"Hello {name}!"
-
-    await websocket.send(greeting)
-    print(f">>> {greeting}")
-
+    async for message in websocket:
+        print(message)
+    
 async def main():
     async with serve(handler, "localhost", 8001):
         await asyncio.get_running_loop().create_future()  # run forever
