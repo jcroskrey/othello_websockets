@@ -9,8 +9,8 @@ class Othello:
         self.black_score = 2
         self.ROWS = len(self.grid)
         self.COLS = len(self.grid[0])
-        self.PLAYER1 = 'white'
-        self.PLAYER2 = 'black'
+        self.PLAYER1 = 'black'
+        self.PLAYER2 = 'white'
         self.directions = [[0, 1], [1, 0], [0, -1], [-1, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]]
 
     def get_default_starting_grid(self) -> list[list[int | None]]:
@@ -22,7 +22,7 @@ class Othello:
         return grid
     
     def make_move(self, player: int, row: int, col: int) -> dict: 
-        curr_player_color = self.PLAYER1 if player == 0 else self.PLAYER2
+        curr_player_color = self.PLAYER2 if player == 0 else self.PLAYER1
         if player == self.move % 2:
             # black is 1 and black starts, so black only plays on even move numbers
             # if not players turn, return error dict 
